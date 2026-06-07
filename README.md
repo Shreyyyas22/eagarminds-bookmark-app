@@ -75,7 +75,7 @@ Then update Supabase Authentication URL Configuration with the deployed Vercel U
 
 ## Agent Sessions
 
-Entire CLI is enabled in this repo for Codex and created the `entire/checkpoints/v1` branch locally. After adding a GitHub remote, verify session sync with:
+Entire CLI is enabled in this repo for Codex, Cursor, and Antigravity, and created the `entire/checkpoints/v1` branch locally. After adding a GitHub remote, verify session sync with:
 
 ```bash
 entire status
