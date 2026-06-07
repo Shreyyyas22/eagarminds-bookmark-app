@@ -83,7 +83,9 @@ entire status
 
 ## Where the AI Agent Got It Wrong
 
-The first email helper instantiated `new Resend()` at module load time, which made `npm run build` fail when `RESEND_API_KEY` was not present locally. The build caught it during page-data collection for `/dashboard`, and it was fixed by creating the Resend client lazily inside `sendWelcomeEmail`. The agent also had to correct typed `useFormState` initial state in the auth forms after TypeScript flagged it.
+The first version of the email helper called `new Resend()` at the top of the file, so the build would crash whenever `RESEND_API_KEY` wasn't set locally. I only caught it by running `npm run build` and saw it fail while collecting page data for `/dashboard`. Fixed it by moving `new Resend()` inside the `sendWelcomeEmail` function so it only runs when actually needed.
+
+TypeScript also flagged that `useFormState` in the auth forms was getting an empty object as initial state without a proper type — it expected `ActionState`. Added a typed `const initialState: ActionState = {}` and it stopped complaining.
 
 ## What I'd Improve With More Time
 
