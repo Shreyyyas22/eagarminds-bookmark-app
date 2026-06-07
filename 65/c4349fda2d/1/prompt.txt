@@ -1,0 +1,35 @@
+or server notifications
+console-log.service.ts:43 [SignalR] Connection disconnected.
+console-log.service.ts:43 [SignalR] WebSocket connected to wss://notifications.bitwarden.com/hub?access_token=[REDACTED]
+console-log.service.ts:43 [SignalR] Using HubProtocol 'messagepack'.
+console-log.service.ts:43 Using SignalR for server notifications
+console-log.service.ts:43 [SignalR] Connection disconnected.
+console-log.service.ts:43 [SignalR] WebSocket connected to wss://notifications.bitwarden.com/hub?access_token=[REDACTED]
+console-log.service.ts:43 [SignalR] Using HubProtocol 'messagepack'.
+console-log.service.ts:51 Bt: User (a0804790-1101-4a64-8182-b44200f6cb32) is not logged in
+    at default-sdk.service.ts:136:26
+    at throwIfEmpty.js:11:86
+    at t._complete (OperatorSubscriber.js:38:21)
+    at t.complete (Subscriber.js:52:18)
+    at takeWhile.js:10:35
+    at t._next (OperatorSubscriber.js:15:21)
+    at t.next (Subscriber.js:34:18)
+    at switchMap.js:14:159
+    at t._next (OperatorSubscriber.js:15:21)
+    at t.next (Subscriber.js:34:18)
+write @ console-log.service.ts:51
+main-app.js?v=1780771037143:1847 Download the React DevTools for a better development experience: https://reactjs.org/link/react-devtools
+console-log.service.ts:51 Bt: User (a0804790-1101-4a64-8182-b44200f6cb32) is not logged in
+    at default-sdk.service.ts:136:26
+    at throwIfEmpty.js:11:86
+    at t._complete (OperatorSubscriber.js:38:21)
+    at t.complete (Subscriber.js:52:18)
+    at takeWhile.js:10:35
+    at t._next (OperatorSubscriber.js:15:21)
+    at t.next (Subscriber.js:34:18)
+    at switchMap.js:14:159
+    at t._next (OperatorSubscriber.js:15:21)
+    at t.next (Subscriber.js:34:18)
+write @ console-log.service.ts:51
+
+I am trying to signup but it is showing could not create account
