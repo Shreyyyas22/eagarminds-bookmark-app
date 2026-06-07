@@ -56,7 +56,11 @@ export async function signUp(
     return { error: "Handle already taken" };
   }
 
-  await sendWelcomeEmail(email, handle);
+  const emailResult = await sendWelcomeEmail(email, handle);
+  if (!emailResult.ok) {
+    console.error("[auth] Welcome email not sent:", emailResult.error);
+  }
+
   redirect("/dashboard");
 }
 

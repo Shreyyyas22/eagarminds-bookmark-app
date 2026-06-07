@@ -2,7 +2,10 @@
 
 import { login } from "@/actions/auth";
 import { AuthSubmitButton } from "@/components/AuthSubmitButton";
+import { AuthCard, AuthError, FormLabel } from "@/components/auth/AuthCard";
 import type { ActionState } from "@/lib/types";
+import { Lock, Mail } from "lucide-react";
+import Link from "next/link";
 import { useFormState } from "react-dom";
 
 const initialState: ActionState = {};
@@ -11,52 +14,62 @@ export default function LoginPage() {
   const [state, formAction] = useFormState(login, initialState);
 
   return (
-    <main className="mx-auto flex min-h-[calc(100vh-96px)] w-full max-w-md flex-col justify-center px-6 py-12">
-      <div>
-        <p className="text-sm font-medium text-stone-500">Welcome back</p>
-        <h1 className="mt-2 text-3xl font-semibold tracking-tight text-stone-950">
-          Log in to EagerMinds
-        </h1>
-      </div>
+    <AuthCard
+      eyebrow="Welcome back"
+      title="Log in to your account"
+      subtitle="Access your dashboard and manage your bookmarks."
+      footer={
+        <>
+          Need an account?{" "}
+          <Link href="/signup" className="font-semibold text-indigo-600 hover:text-indigo-700">
+            Sign up free
+          </Link>
+        </>
+      }
+    >
+      <form action={formAction} className="space-y-5">
+        <div>
+          <FormLabel htmlFor="email">Email</FormLabel>
+          <div className="relative mt-2">
+            <Mail className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-stone-400" />
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autoComplete="email"
+              required
+              placeholder="you@example.com"
+              className="input-field pl-10"
+            />
+          </div>
+        </div>
 
-      <form action={formAction} className="mt-8 space-y-5">
-        <label className="block">
-          <span className="text-sm font-medium text-stone-700">Email</span>
-          <input
-            name="email"
-            type="email"
-            autoComplete="email"
-            required
-            className="mt-2 h-11 w-full rounded-md border border-stone-300 bg-white px-3 text-sm outline-none transition focus:border-stone-950 focus:ring-2 focus:ring-stone-950/10"
-          />
-        </label>
-
-        <label className="block">
-          <span className="text-sm font-medium text-stone-700">Password</span>
-          <input
-            name="password"
-            type="password"
-            autoComplete="current-password"
-            required
-            className="mt-2 h-11 w-full rounded-md border border-stone-300 bg-white px-3 text-sm outline-none transition focus:border-stone-950 focus:ring-2 focus:ring-stone-950/10"
-          />
-        </label>
+        <div>
+          <FormLabel htmlFor="password">Password</FormLabel>
+          <div className="relative mt-2">
+            <Lock className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-stone-400" />
+            <input
+              id="password"
+              name="password"
+              type="password"
+              autoComplete="current-password"
+              required
+              placeholder="••••••••"
+              className="input-field pl-10"
+            />
+          </div>
+        </div>
 
         {state.error ? (
-          <p className="rounded-md border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">
-            {state.error}
-          </p>
+          <div className="pt-1">
+            <AuthError message={state.error} />
+          </div>
         ) : null}
 
-        <AuthSubmitButton>Log in</AuthSubmitButton>
+        <div className="pt-1">
+          <AuthSubmitButton>Log in</AuthSubmitButton>
+        </div>
       </form>
-
-      <p className="mt-6 text-sm text-stone-600">
-        Need an account?{" "}
-        <a href="/signup" className="font-medium text-stone-950 underline">
-          Sign up
-        </a>
-      </p>
-    </main>
+    </AuthCard>
   );
 }

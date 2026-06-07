@@ -66,9 +66,12 @@ export function HandleAvailability() {
   return (
     <p
       className={[
-        "mt-2 flex items-center gap-2 text-xs",
-        status === "available" ? "text-emerald-700" : "text-stone-500",
-        status === "taken" || status === "invalid" ? "text-red-600" : "",
+        "mt-2 flex items-center gap-2 rounded-lg px-2 py-1.5 text-xs font-medium",
+        status === "available"
+          ? "bg-emerald-50 text-emerald-700"
+          : status === "checking"
+            ? "bg-stone-50 text-stone-500"
+            : "bg-red-50 text-red-600",
       ].join(" ")}
     >
       <Icon className={status === "checking" ? "h-3.5 w-3.5 animate-spin" : "h-3.5 w-3.5"} />

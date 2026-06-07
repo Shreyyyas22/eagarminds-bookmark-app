@@ -23,7 +23,7 @@ export function DeleteButton({ id, title }: DeleteButtonProps) {
           });
         }
       }}
-      className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-red-200 text-red-600 transition hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-60"
+      className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-red-200 bg-white text-red-600 shadow-sm transition hover:border-red-300 hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-60"
       aria-label={`Delete ${title}`}
     >
       <Trash2 className="h-4 w-4" />
